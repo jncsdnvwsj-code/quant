@@ -26,14 +26,14 @@ def stock_path(S, vol, r, T, N):
 def european_call(stock_path, K):
     return max(stock_path[N]-K,0)
 
-def d_1(x):   
+def d_1(S, K, vol, r, T):   
     return (log(S/K) + (r + vol**2 / 2)*T)/(vol * sqrt(T))
 
-def d_2(x):
-    return d_1 - vol * sqrt(T)
+def d_2(S, K, vol, r, T):
+    return d_1(S, K, vol, r, T) - vol * sqrt(T)
 
-def BS_european_price(x):
-    return x*phi(d_1(x)) - K * exp(-r*T)*phi(d_2(x))
+def BS_european_price(S, K, vol, r, T):
+    return S*phi(d_1(S, K, vol, r, T)) - K * exp(-r*T)*phi(d_2(S, K, vol, r, T))
 
 def montecarlo(S, vol, r, T,K, N,n):
     Payoff=[]
@@ -41,5 +41,5 @@ def montecarlo(S, vol, r, T,K, N,n):
         Payoff.append(european_call(stock_path(S, vol, r, T, N),K))
     return[exp(-r*T)*mean(Payoff), 1.96*std(Payoff)/sqrt(n)]
 
-print(BS_european_price())
+print(BS_european_price(S, K, vol, r, T))
 print(montecarlo(S, vol, r, T,K, N, n))
