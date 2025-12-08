@@ -74,7 +74,7 @@ def BinomialAmerican(p,alpha,sigma,r,S0,K,T,N,OptionType):
         for i in range(N-j):
             Price[i,N-j-1]=max(PayOff[i,N-j-1],exp(-r*h)*(q_u * Price[i,N-j]+q_d * Price[i+1,N-j]))
             CashFlow[i,N-j-1]=max(PayOff[i,N-j-1]-exp(-r*h)*(q_u * Price[i,N-j]+q_d * Price[i+1,N-j]),0)
-    return [Price,CashFlow]
+    return [Price[0, 1],CashFlow]
 
 #[Price,CashFlow]=BinomialAmerican(0.5,0.01,0.2,0.01,10,10,1/12,5,StandardPut)
 #print("Binomial American price:\n",Price)
