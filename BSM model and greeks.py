@@ -35,7 +35,7 @@ def rho(S, K, vol, r, T):
     return K * T * exp(-r*T)*delta(S, K, vol, r, T)
 
 def theta(S, K, vol, r, T):
-    return - S * delta(S, K, vol, r, T) * vol / (2 * sqrt(T)) - r*K*exp(-r*T)*delta(S, K, vol, r, T)
+    return (-1) * S * delta(S, K, vol, r, T) * vol / (2 * sqrt(T)) - r*K*exp(-r*T)*delta(S, K, vol, r, T)
 
 def vega(S, K, vol, r, T):
     return S*delta(S, K, vol, r, T)*sqrt(T)
