@@ -38,3 +38,17 @@ def vega(S, K, vol, r, T):
     return S*delta(S, K, vol, r, T)*sqrt(T)
 
 print(BS_european_price(S, K, vol, r, T))
+
+stock_price = np.linspace(50, 150, 100)
+call_price = np.zeros_like(stock_price)
+put_price = np.zeros_like(stock_price)
+
+for i, price in enumerate(stock_price):
+    call_price[i] = BS_european_price(price, K, T, r, vol)
+
+plt.plot(stock_price, call_price, label="Call option price")
+plt.xlabel("Stock price")
+plt.ylabel("Option price")
+plt.title("Option price in terms of stock price")
+plt.legend()
+plt.show()
