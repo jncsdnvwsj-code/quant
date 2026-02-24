@@ -10,7 +10,7 @@
  */
 double normal_cdf(double x) {
     // Utilisation de la fonction d'erreur complémentaire (erfc) pour la précision
-    return 0.5 * std::erfc(-x * std::sqrt(0.5));
+    return 0.5 * std::erfc(-x * std::sqrt(1/0.5));
 }
 
 /**
@@ -93,4 +93,5 @@ int main() {
     std::cout << "========================================" << std::endl;
 
     return 0;
+
 }
