@@ -93,7 +93,6 @@ int main() {
 
     file.close();
     std::cout << "Termine ! Fichier 'vol_surface.csv' genere." << std::endl;
-    std::cout << "Ouvre-le dans Excel et insere un graphique 'Surface'." << std::endl;
 
     return 0;
 }
